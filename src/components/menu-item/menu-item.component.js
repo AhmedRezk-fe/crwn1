@@ -1,16 +1,19 @@
 import React from "react";
+import { withRouter } from "react-router-dom"
 import "./minu-item.style.scss";
 
-const MenuItem = ({ title ,imageUrl , size }) => {
-    return (
-        <div className={`menu-item ${size  ? size : ""}`}>
-            <div className="background-image"  style={{backgroundImage : `url(${imageUrl})`}} />
-            <div className="content">
-                <h1 className="title">{title.toUpperCase()}</h1>
-                <span className="subtitle">SHOP NOW</span>
-            </div>
-        </div>
-    )
-}
+const MenuItem = ({ title, imageUrl, size, history,linkUrl, match }) => (
 
-export default MenuItem;
+    <div className={`menu-item ${size ? size : ""}`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+
+        <div className="background-image"
+            style={{ backgroundImage: `url(${imageUrl})` }} />
+
+        <div className="content">
+            <h1 className="title">{title.toUpperCase()}</h1>
+            <span className="subtitle">SHOP NOW</span>
+        </div>
+    </div>
+)
+
+export default withRouter(MenuItem);
