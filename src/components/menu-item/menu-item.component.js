@@ -4,7 +4,10 @@ import "./minu-item.style.scss";
 
 const MenuItem = ({ title, imageUrl, size, history,linkUrl, match }) => (
 
-    <div className={`menu-item ${size ? size : ""}`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+    <div className={`menu-item ${size ? size : ""}`} onClick={() => {
+        // console.log(`history ${history} match.url ${match.url} "linkUrl"${linkUrl}`)
+        history.push(`${match.url}${linkUrl}`)
+    }} >
 
         <div className="background-image"
             style={{ backgroundImage: `url(${imageUrl})` }} />
